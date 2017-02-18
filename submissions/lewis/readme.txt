@@ -11,4 +11,4 @@ Replication
   It is harder to completely customize using Tableau.
   For instance, there is a limit to the thickness of the axes.
   Other than that, manipulating the color and size of the marks was much quicker.
-
+  The images are "anscombeI_bar.png" and "anscombe_scatter.png".

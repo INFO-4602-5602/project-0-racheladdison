@@ -121,9 +121,8 @@ d3.csv('data/anscombe_I.csv', function(csvData1) {
 					})
 				.attr('width', 19)
 					.attr('height', function(d) {return h - yOffset - margin - yScale(d[xVal]);})
-					.on("mouseover", handleMouseOver);
-				//y-values bar graph
-				xScale = d3.scale.linear()
+					//y-values bar graph
+					xScale = d3.scale.linear()
 					.domain([0, d3.max(data1, function(d) {
 						return parseFloat(d[yVal]);
 					})+1])
@@ -172,8 +171,6 @@ d3.csv('data/anscombe_I.csv', function(csvData1) {
 								})
 							.attr('width', 19)
 								.attr('height', function(d) {return h - yOffset - margin - yScale(d[yVal]);})
-								.on("mouseover", handleMouseOver);
-}
 })
 // Put your part three & four code here ***********************
 d3.csv('data/anscombe_I.csv', function(csvData1) {
@@ -231,28 +228,6 @@ d3.csv('data/anscombe_I.csv', function(csvData1) {
 					.on("click", handleClick);
 				point.append("svg:title")
 					.text(function(d) {return d['x']+', '+d['y'];});
-
-				var leastSquaresCoeff = leastSquares(xSeries, ySeries);
-
-				// apply the reults of the least squares regression
-				var x1 = xLabels[0];
-				var y1 = leastSquaresCoeff[0] + leastSquaresCoeff[1];
-				var x2 = xLabels[xLabels.length - 1];
-				var y2 = leastSquaresCoeff[0] * xSeries.length + leastSquaresCoeff[1];
-				var trendData = [[x1,y1,x2,y2]];
-
-				var trendline = svg.selectAll(".trendline")
-					.data(trendData);
-
-				trendline.enter()
-					.append("line")
-					.attr("class", "trendline")
-					.attr("x1", function(d) { return xScale(d[0]); })
-					.attr("y1", function(d) { return yScale(d[1]); })
-					.attr("x2", function(d) { return xScale(d[2]); })
-					.attr("y2", function(d) { return yScale(d[3]); })
-					.attr("stroke", "black")
-					.attr("stroke-width", 1);
 
 				function handleMouseOver(d, i) {
 					d3.select(this).attr({
@@ -331,10 +306,16 @@ d3.csv('data/anscombe_I.csv', function(csvData1) {
 								.attr('class', 'points')
 								.attr('cx', function(d) {return xScale1(d[xVal])})
 								.attr('cy', function(d) {return yScale1(d[yVal])})
-								.attr('r', 4)
+								.attr('r', 4);
+							svg1.append("text")
+								.attr("x", (w / 2))             
+								.attr("y", (h / 15))
+								.attr("text-anchor", "middle")  
+								.style("font-size", "16px") 
+								.text("Anscombe I");
 
-								//anscombe II
-								xScale2 = d3.scale.linear()
+							//anscombe II
+							xScale2 = d3.scale.linear()
 								.domain([0, d3.max(data2, function(d) {
 									return parseFloat(d[xVal]);
 								})+1])
@@ -381,9 +362,15 @@ d3.csv('data/anscombe_I.csv', function(csvData1) {
 											.attr('class', 'points')
 											.attr('cx', function(d) {return xScale2(d[xVal])})
 											.attr('cy', function(d) {return yScale2(d[yVal])})
-											.attr('r', 4)
-											//anscombe III
-											xScale3 = d3.scale.linear()
+											.attr('r', 4);
+										svg2.append("text")
+											.attr("x", (w / 2))             
+											.attr("y", (h / 15))
+											.attr("text-anchor", "middle")  
+											.style("font-size", "16px") 
+											.text("Anscombe II");
+										//anscombe III
+										xScale3 = d3.scale.linear()
 											.domain([0, d3.max(data3, function(d) {
 												return parseFloat(d[xVal]);
 											})+1])
@@ -430,10 +417,16 @@ d3.csv('data/anscombe_I.csv', function(csvData1) {
 														.attr('class', 'points')
 														.attr('cx', function(d) {return xScale1(d[xVal])})
 														.attr('cy', function(d) {return yScale1(d[yVal])})
-														.attr('r', 4)
+														.attr('r', 4);
+													svg3.append("text")
+														.attr("x", (w / 2))             
+														.attr("y", (h / 15))
+														.attr("text-anchor", "middle")  
+														.style("font-size", "16px") 
+														.text("Anscombe III");
 
-														//anscombe IV
-														xScale4 = d3.scale.linear()
+													//anscombe IV
+													xScale4 = d3.scale.linear()
 														.domain([0, d3.max(data4, function(d) {
 															return parseFloat(d[xVal]);
 														})+1])
@@ -480,7 +473,13 @@ d3.csv('data/anscombe_I.csv', function(csvData1) {
 																	.attr('class', 'points')
 																	.attr('cx', function(d) {return xScale1(d[xVal])})
 																	.attr('cy', function(d) {return yScale1(d[yVal])})
-																	.attr('r', 4)
+																	.attr('r', 4);
+																svg4.append("text")
+																	.attr("x", (w / 2))             
+																	.attr("y", (h / 15))
+																	.attr("text-anchor", "middle")  
+																	.style("font-size", "16px") 
+																	.text("Anscombe IV");
 			})
 		})
 	})
